@@ -19,7 +19,6 @@ The platform supports:
 - Credit-based usage flow
 - Razorpay payment integration for purchasing credits
 - Firebase integration on the frontend
-- Render-ready deployment using a single Node web service
 
 ## Tech Stack
 
@@ -93,15 +92,13 @@ The backend exposes these main route groups:
 Create `client/.env`:
 
 ```env
-VITE_SERVER_URL=http://localhost:6000
-VITE_FIREBASE_APIKEY=your_value
+VITE_SERVER_URL=http://localhost:8000
+VITE_FIREBASE_API_KEY=your_value
 VITE_FIREBASE_AUTH_DOMAIN=your_value
 VITE_FIREBASE_PROJECT_ID=your_value
 VITE_FIREBASE_STORAGE_BUCKET=your_value
 VITE_FIREBASE_MESSAGING_SENDER_ID=your_value
 VITE_FIREBASE_APP_ID=your_value
-VITE_GOOGLE_CLIENT_ID=your_value
-VITE_RAZORPAY_KEY_ID=your_value
 ```
 
 ### Server
@@ -109,7 +106,7 @@ VITE_RAZORPAY_KEY_ID=your_value
 Create `server/.env`:
 
 ```env
-PORT=6000
+PORT=8000
 MONGODB_URL=your_mongodb_connection_string
 FRONTEND_URL=http://localhost:5173
 JWT_SECRET=your_jwt_secret
@@ -155,42 +152,7 @@ npm run dev
 
 Frontend default: `http://localhost:5173`
 
-Backend default: `http://localhost:6000`
-
-## Deploy on Render
-
-This repo includes a top-level `render.yaml` so it can be deployed as a single Render web service.
-
-### Render setup
-
-1. Push the repository to GitHub.
-2. In Render, create a new Blueprint deployment from this repository.
-3. Render will detect `render.yaml` and create the `interviewiq` web service.
-4. Add the required environment variables in Render before the first successful deploy.
-
-### Required Render environment variables
-
-- `MONGODB_URL`
-- `JWT_SECRET`
-- `OPENROUTER_API_KEY`
-- `RAZORPAY_KEY_ID`
-- `RAZORPAY_KEY_SECRET`
-- `FRONTEND_URL`
-- `VITE_GOOGLE_CLIENT_ID`
-- `VITE_RAZORPAY_KEY_ID`
-- `VITE_FIREBASE_APIKEY`
-- `VITE_FIREBASE_AUTH_DOMAIN`
-- `VITE_FIREBASE_PROJECT_ID`
-- `VITE_FIREBASE_STORAGE_BUCKET`
-- `VITE_FIREBASE_MESSAGING_SENDER_ID`
-- `VITE_FIREBASE_APP_ID`
-
-### Important deployment notes
-
-- Set `FRONTEND_URL` to your final Render app URL, for example `https://interviewiq.onrender.com`.
-- Add the same Render URL to your Google OAuth authorized JavaScript origins.
-- Update Firebase authorized domains to include your Render domain.
-- If you want client-side Razorpay checkout to work, also make sure the published frontend has access to `VITE_RAZORPAY_KEY_ID`.
+Backend default: `http://localhost:8000`
 
 ## Notes
 
