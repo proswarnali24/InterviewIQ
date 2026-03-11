@@ -1,0 +1,25 @@
+.DS_Store
+
+# Root dependencies and builds
+node_modules/
+dist/
+build/
+
+# Environment files
+.env
+client/.env
+server/.env
+
+# Package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Frontend
+client/node_modules/
+client/dist/
+
+# Backend
+server/node_modules/
+server/public/uploads/
