@@ -68,7 +68,7 @@ function Auth({isModel = false}) {
                         setErrorMsg("")
                     } catch (oauthError) {
                         console.error("Google OAuth login error:", oauthError)
-                        setErrorMsg("Google login failed. Check Google OAuth client origin for localhost:5173.")
+                        setErrorMsg("Google login failed. Check Google OAuth client origins and authorized JavaScript origins.")
                         dispatch(setUserData(null))
                     } finally {
                         setLoading(false)
@@ -127,7 +127,7 @@ function Auth({isModel = false}) {
             const code = error?.code || ""
 
             if (code === "auth/popup-blocked") {
-                setErrorMsg("Popup blocked by browser. Please allow popups for localhost and try again.")
+                setErrorMsg("Popup blocked by browser. Please allow popups for this site and try again.")
             } else if (code === "auth/cancelled-popup-request" || code === "auth/popup-closed-by-user") {
                 setErrorMsg("Google sign-in popup was closed. Please try again.")
             } else if (code === "auth/invalid-continue-uri") {
